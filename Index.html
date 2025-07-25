@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ultimate Resume Builder</title>
+  <link id="theme-link" rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>📄 Resume Builder Pro</h1>
+    <p>Craft your professional resume with style ✨</p>
+  </header>
+
+  <main class="container">
+
+    <!-- =================== Resume Input Form =================== -->
+    <section class="form-section">
+      <form id="resume-form">
+
+        <!-- 🔹 Basic Info -->
+        <fieldset>
+          <legend>👤 Personal Details</legend>
+
+          <label>Full Name: <input type="text" name="full-name" required></label>
+          <label>Age: <input type="number" name="age"></label>
+          <label>Email: <input type="email" name="email"></label>
+          <label>Phone Number: <input type="tel" name="phone"></label>
+          <label>Address: <input type="text" name="address" placeholder="City, State, Country"></label>
+          <label>Profile Picture URL: <input type="url" name="photo"></label>
+        </fieldset>
+
+        <!-- 🔹 Career Summary -->
+        <fieldset>
+          <legend>📌 Career Objective</legend>
+          <textarea name="summary" rows="4" placeholder="Summarize your goal, mission, or background..."></textarea>
+        </fieldset>
+
+        <!-- 🔹 Education (repeatable) -->
+        <fieldset id="education-fields">
+          <legend>🎓 Education</legend>
+          <div class="education-entry">
+            <label>Degree: <input type="text" name="degree[]"></label>
+            <label>Institute: <input type="text" name="institute[]"></label>
+            <label>Year: <input type="text" name="year[]"></label>
+            <label>Grade / CGPA: <input type="text" name="grade[]"></label>
+          </div>
+        </fieldset>
+        <button type="button" onclick="addEducation()">➕ Add Another Education</button>
+
+        <!-- 🔹 Work Experience -->
+        <fieldset id="experience-fields">
+          <legend>💼 Work Experience</legend>
+          <div class="work-entry">
+            <label>Company: <input type="text" name="company[]"></label>
+            <label>Role: <input type="text" name="role[]"></label>
+            <label>Duration: <input type="text" name="duration[]"></label>
+            <label>Description: <textarea name="workdesc[]" rows="3"></textarea></label>
+          </div>
+        </fieldset>
+        <button type="button" onclick="addWork()">➕ Add Another Experience</button>
+
+        <!-- 🔹 Projects -->
+        <fieldset id="project-fields">
+          <legend>🧪 Projects</legend>
+          <div class="project-entry">
+            <label>Project Title: <input type="text" name="project-title[]"></label>
+            <label>Description: <textarea name="project-desc[]" rows="3"></textarea></label>
+          </div>
+        </fieldset>
+        <button type="button" onclick="addProject()">➕ Add Another Project</button>
+
+        <!-- 🔹 Skills -->
+        <fieldset>
+          <legend>🛠️ Skills</legend>
+          <textarea name="skills" rows="3" placeholder="e.g. Python, JavaScript, React, SQL..."></textarea>
+        </fieldset>
+
+        <!-- 🔹 Certifications -->
+        <fieldset>
+          <legend>📜 Certifications</legend>
+          <textarea name="certifications" rows="3" placeholder="e.g. AWS Certified, Microsoft Azure, etc."></textarea>
+        </fieldset>
+
+        <!-- 🔹 Achievements -->
+        <fieldset>
+          <legend>🏆 Achievements</legend>
+          <textarea name="achievements" rows="3" placeholder="Olympiad Winner, Hackathon Champion, Top Scorer, etc."></textarea>
+        </fieldset>
+
+        <!-- 🔹 Languages & Interests -->
+        <fieldset>
+          <legend>🌐 Languages & Interests</legend>
+          <textarea name="languages" rows="2" placeholder="Languages known"></textarea>
+          <textarea name="interests" rows="2" placeholder="Football, Gaming, Chess, etc."></textarea>
+        </fieldset>
+
+        <!-- 🔹 Socials -->
+        <fieldset>
+          <legend>🔗 Social Profiles</legend>
+          <label>GitHub: <input type="url" name="github"></label>
+          <label>LinkedIn: <input type="url" name="linkedin"></label>
+          <label>Portfolio Website: <input type="url" name="portfolio"></label>
+        </fieldset>
+
+        <!-- 🔹 Theme Selector -->
+        <fieldset>
+          <legend>🎨 Choose Resume Theme</legend>
+          <select name="theme" id="theme-select">
+            <option value="classic">Classic</option>
+            <option value="modern">Modern</option>
+            <option value="dark">Dark</option>
+            <option value="colorful">Colorful</option>
+            <option value="tech">Tech Style</option>
+          </select>
+        </fieldset>
+
+        <!-- 🔹 Final Button -->
+        <button type="submit">✨ Generate Resume</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- JS script placeholders for dynamic fields -->
+  <script>
+    function addEducation() {
+      const container = document.getElementById("education-fields");
+      const div = document.createElement("div");
+      div.classList.add("education-entry");
+      div.innerHTML = `
+        <label>Degree: <input type="text" name="degree[]"></label>
+        <label>Institute: <input type="text" name="institute[]"></label>
+        <label>Year: <input type="text" name="year[]"></label>
+        <label>Grade / CGPA: <input type="text" name="grade[]"></label>
+      `;
+      container.appendChild(div);
+    }
+
+    function addWork() {
+      const container = document.getElementById("experience-fields");
+      const div = document.createElement("div");
+      div.classList.add("work-entry");
+      div.innerHTML = `
+        <label>Company: <input type="text" name="company[]"></label>
+        <label>Role: <input type="text" name="role[]"></label>
+        <label>Duration: <input type="text" name="duration[]"></label>
+        <label>Description: <textarea name="workdesc[]" rows="3"></textarea></label>
+      `;
+      container.appendChild(div);
+    }
+
+    function addProject() {
+      const container = document.getElementById("project-fields");
+      const div = document.createElement("div");
+      div.classList.add("project-entry");
+      div.innerHTML = `
+        <label>Project Title: <input type="text" name="project-title[]"></label>
+        <label>Description: <textarea name="project-desc[]" rows="3"></textarea></label>
+      `;
+      container.appendChild(div);
+    }
+  </script>
+
+</body>
+                                                                                                           </html>
