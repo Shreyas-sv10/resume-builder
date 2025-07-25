@@ -1,0 +1,65 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("resume-form");
+  const preview = document.getElementById("resume-preview");
+  const themeSelect = document.getElementById("theme");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const dob = form.dob.value;
+    const address = form.address.value;
+    const objective = form.objective.value;
+    const education = form.education.value;
+    const experience = form.experience.value;
+    const skills = form.skills.value;
+    const projects = form.projects.value;
+    const certificates = form.certificates.value;
+
+    const highlightedSkills = highlightWords(skills, ["Java", "Python", "HTML", "CSS", "React"]);
+    const highlightedExperience = highlightWords(experience, ["developer", "intern", "project", "engineer"]);
+    const highlightedEducation = highlightWords(education, ["B.Tech", "Bachelor", "PUC", "10th"]);
+
+    preview.className = `resume ${themeSelect.value}`;
+    preview.innerHTML = `
+      <section>
+        <h2>${name}</h2>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Date of Birth:</strong> ${dob}</p>
+        <p><strong>Address:</strong> ${address}</p>
+      </section>
+      <section>
+        <h3>Objective</h3>
+        <p>${objective}</p>
+      </section>
+      <section>
+        <h3>Education</h3>
+        <p>${highlightedEducation}</p>
+      </section>
+      <section>
+        <h3>Experience</h3>
+        <p>${highlightedExperience}</p>
+      </section>
+      <section>
+        <h3>Skills</h3>
+        <p>${highlightedSkills}</p>
+      </section>
+      <section>
+        <h3>Projects</h3>
+        <p>${projects}</p>
+      </section>
+      <section>
+        <h3>Certificates</h3>
+        <p>${certificates}</p>
+      </section>
+    `;
+  });
+
+  function highlightWords(text, wordsToHighlight) {
+    const pattern = new RegExp(`\\b(${wordsToHighlight.join("|")})\\b`, "gi");
+    return text.replace(pattern, '<span class="highlight">$1</span>');
+  }
+});
